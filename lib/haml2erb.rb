@@ -3,6 +3,7 @@ require 'haml2erb/engine'
 
 module Haml2Erb
   def self.convert template, options = {}
-    Engine.new(template, {:format => :html5}.merge(options)).to_erb
+    engine = Engine.new({ format: :html5 }.merge(options))
+    engine.call(template)
   end
 end
